@@ -1,6 +1,8 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
+const html2Canvas = require("html2canvas");
+const jsPdf = require("jspdf");
 
 inquirer
   .prompt({
