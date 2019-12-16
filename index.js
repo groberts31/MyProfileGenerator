@@ -6,8 +6,6 @@ var pdf = require("pdf-creator-node");
 
 const readFileAsync = util.promisify(fs.readFile);
 
-
-
 inquirer
     .prompt([
         {
