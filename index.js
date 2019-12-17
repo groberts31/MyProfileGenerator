@@ -27,6 +27,12 @@ inquirer
             fs.appendFileSync('profile.pdf', name + "\n" + res.data.avatar_url + "\n" + res.data.html_url + "\n" + res.data.location + "\n" + res.data.bio + "\n" + res.data.public_repos + "\n" + res.data.followers + "\n" + res.data.following);
             fs.writeFileSync('index.html', name + "\n" + res.data.avatar_url + "\n" + res.data.html_url + "\n" + res.data.location + "\n" + res.data.bio + "\n" + res.data.public_repos + "\n" + res.data.followers + "\n" + res.data.following);
             console.log(res.data.name);
-
+            console.log(res.data.avatar_url);
+            console.log(res.data.html_url);
+            console.log(res.data.location);
+            console.log(res.data.bio);
+            console.log(res.data.public_repos);
+            console.log(res.data.followers);
+            console.log(res.data.following);
         });
     });
