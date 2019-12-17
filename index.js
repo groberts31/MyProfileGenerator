@@ -18,15 +18,15 @@ inquirer
             name: "colorOps",
             choices: ["Red", "Blue", "Green", "Yellow", "Orange"]
         }])
-    .then(function({ username }) {
+    .then(function ({ username }) {
         const queryUrl = `https://api.github.com/users/${username}`;
 
-        axios.get(queryUrl).then(function(res) {
+        axios.get(queryUrl).then(function (res) {
             const name = res.data.name;
             console.log(name);
-            fs.appendFileSync('profile.pdf', name);
-            fs.appendFileSync('index.html', name);
+            fs.appendFileSync('profile.pdf', name + "\n" + res.data.avatar_url + "\n" + res.data.html_url + "\n" + res.data.location + "\n" + res.data.bio + "\n" + res.data.public_repos + "\n" + res.data.followers + "\n" + res.data.following);
+            fs.writeFileSync('index.html', name + "\n" + res.data.avatar_url + "\n" + res.data.html_url + "\n" + res.data.location + "\n" + res.data.bio + "\n" + res.data.public_repos + "\n" + res.data.followers + "\n" + res.data.following);
             console.log(res.data.name);
-      
+
         });
     });
