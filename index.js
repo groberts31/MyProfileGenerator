@@ -2,7 +2,10 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 const util = require("util");
-var colorOps = ["Red"];
+const pdf = require("html-pdf");
+
+// fix to where it only shows color of choice chosen
+var colorOps = ["Red"]; 
 
 const readFileAsync = util.promisify(fs.readFile);
 
