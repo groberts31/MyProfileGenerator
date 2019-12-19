@@ -44,7 +44,7 @@ inquirer
                   <body>
                   <h1> <span style="color:`+ colorOps + `">` + name + `</span></h1>
                   <hr>
-                  <img src="`+ res.data.avatar_url + `" alt="pic">
+                  <img src="`+ res.data.avatar_url + `" alt="pic" width="265px" height="300px>
                   <br>
                   <p>User Name : ` + name + `
                   <br>
