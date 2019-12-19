@@ -7,7 +7,7 @@ var html = fs.readFileSync('./test/businesscard.html', 'utf8');
 var options = { format: 'Letter' };
 
 // fix to where it only shows color of choice chosen
-var colorOps = ["Red"];
+// var colorOps = ["Red"];
 
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -23,10 +23,10 @@ inquirer
             name: "colorOps",
             choices: ["Red", "Blue", "Green", "Yellow", "Orange"]
         }])
-    .then(function ({ username }) {
+    .then(function ({ username, colorOps }) {
         const queryUrl = `https://api.github.com/users/${username}`;
 
-
+        console.log(colorOps);
         axios.get(queryUrl).then(function (res) {
             const name = res.data.name;
             console.log(name);
@@ -69,4 +69,7 @@ inquirer
             );
         });
     });
-
+pdf.create(html, options).toFile('./businesscard.pdf', function (err, res) {
+    if (err) return console.log(err);
+    console.log(res);
+})
