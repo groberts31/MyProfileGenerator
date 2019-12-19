@@ -27,15 +27,15 @@ inquirer
         console.log(colorOps);
         axios.get(queryUrl).then(function (res) {
             const name = res.data.name;
-            console.log(name);
-            console.log(res.data.name);
+            console.log("Name: " + name);
+            console.log("Username: " + res.data.name);
             console.log(res.data.avatar_url);
-            console.log(res.data.html_url);
-            console.log(res.data.location);
-            console.log(res.data.bio);
-            console.log(res.data.public_repos);
-            console.log(res.data.followers);
-            console.log(res.data.following);
+            console.log("Github URL: " + res.data.html_url);
+            console.log("Location: " + res.data.location);
+            console.log("Bio: " + res.data.bio);
+            console.log("Public Repos: " + res.data.public_repos);
+            console.log("Followers: " + res.data.followers);
+            console.log("Following: " + res.data.following);
 
             fs.writeFileSync("index.html", `<!DOCTYPE html>
             <html lang="en">
@@ -51,7 +51,7 @@ inquirer
                   <br>
                   <p>User Name : ` + name + `
                   <br>
-                  Repo URL: <a href="`+ res.data.html_url + `">` + username + `</a>
+                  Github URL: <a href="`+ res.data.html_url + `">` + username + `</a>
                   <br>
                   </p>Location: `+ res.data.location + `
                   <br>
