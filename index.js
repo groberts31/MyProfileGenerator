@@ -3,11 +3,9 @@ const axios = require("axios");
 const inquirer = require("inquirer");
 const util = require("util");
 var pdf = require("html-pdf");
-var html = fs.readFileSync('./test/businesscard.html', 'utf8');
+var html = fs.readFileSync('index.html', 'utf8');
 var options = { format: 'Letter' };
 
-// fix to where it only shows color of choice chosen
-// var colorOps = ["Red"];
 
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -49,7 +47,7 @@ inquirer
                   <body>
                   <h1> <span style="color:`+ colorOps + `">` + name + `</span></h1>
                   <hr>
-                  <img src="`+ res.data.avatar_url + `" alt="pic" width="265px" height="300px>
+                  <img src="`+ res.data.avatar_url + `" alt="pic" width="30%" height="34%">
                   <br>
                   <p>User Name : ` + name + `
                   <br>
@@ -66,7 +64,7 @@ inquirer
                   Following: `+ res.data.following + `
                   </body>
                   </html>`
-            );
+                );
         });
     });
 pdf.create(html, options).toFile('./businesscard.pdf', function (err, res) {
