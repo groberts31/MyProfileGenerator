@@ -2,28 +2,30 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 const util = require("util");
-const pdf = require("html-pdf");
+var pdf = require("html-pdf");
+var html = fs.readFileSync('./test/businesscard.html', 'utf8');
+var options = { format: 'Letter' };
 
 // fix to where it only shows color of choice chosen
-var colorOps = ["Red"]; 
+var colorOps = ["Red"];
 
 const readFileAsync = util.promisify(fs.readFile);
 
 inquirer
-.prompt([
-    {
-        message: "Enter your GitHub username:",
-        name: "username"
-    },
-    {
-        message: "What is your favorite color from options below?",
-        type: "list",
-        name: "colorOps",
-        choices: ["Red", "Blue", "Green", "Yellow", "Orange"]
-    }])
+    .prompt([
+        {
+            message: "Enter your GitHub username:",
+            name: "username"
+        },
+        {
+            message: "What is your favorite color from options below?",
+            type: "list",
+            name: "colorOps",
+            choices: ["Red", "Blue", "Green", "Yellow", "Orange"]
+        }])
     .then(function ({ username }) {
         const queryUrl = `https://api.github.com/users/${username}`;
-        
+
 
         axios.get(queryUrl).then(function (res) {
             const name = res.data.name;
@@ -63,7 +65,8 @@ inquirer
                   <br>
                   Following: `+ res.data.following + `
                   </body>
-                  </html>`);
+                  </html>`
+            );
         });
     });
 
